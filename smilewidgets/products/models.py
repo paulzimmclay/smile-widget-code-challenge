@@ -22,3 +22,12 @@ class GiftCard(models.Model):
     @property
     def formatted_amount(self):
         return '${0:.2f}'.format(self.amount / 100)
+
+class ProductPrice(models.Model):
+    """
+    Product Price class. Rows on this table represent sales. 
+    """
+    code = models.CharField(max_length=25, help_text='Internal facing reference to product')
+    price = models.PositiveIntegerField()
+    date_start = models.DateField()
+    date_end = models.DateField(blank=True, null=True)
