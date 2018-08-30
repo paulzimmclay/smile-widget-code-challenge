@@ -1,9 +1,20 @@
+import json
+from django.forms.models import model_to_dict
 from django.http import HttpResponse, JsonResponse
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
+from django.views.decorators.csrf import csrf_exempt
+from .models import Product, ProductPrice
 
-# Create your views here.
+
+@csrf_exempt # For testing with Postman
 def get_price(request):
-    if request.method == 'GET':
-        # logic goes here to look up pricing
-        return HttpResponse("Hello, world.")
+    # Look up ProductPrice according to incoming data
+    # new_price = model_to_dict(Product.objects.get(code=params['code']))
+
+    params = json.loads(request.body) # Get incoming data, save as dict
+    # given this, check against ProductPrice
+    new_price = model_to_dict(ProductPrice.objects.get(code=params['code']))
+    print(new_price['price'])
+
+
+
+    return HttpResponse(new_price['price'])
