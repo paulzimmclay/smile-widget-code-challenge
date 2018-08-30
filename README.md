@@ -1,3 +1,13 @@
+# New fork info:
+
+Hi! Thanks for the opportunity to interview with Smile Direct Club! Any feedback is much appreciated!
+
+
+
+*Thought Process:*
+1. Install Django REST
+2. Get anything back from API with Postman
+
 # smile-widget-code-challenge
 
 The Smile Widget Company currently sells two types of smile widgets: a Big Widget and a Small Widget.  We'd like to add more flexibility to our product pricing.
