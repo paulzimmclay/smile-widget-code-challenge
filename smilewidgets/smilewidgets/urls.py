@@ -18,5 +18,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('products/', include('products.urls')) # when url matches product, head to products/urls.py
+    path('api/', include('products.urls')) # when url matches product, head to products/urls.py
 ]

@@ -4,6 +4,6 @@ from rest_framework.parsers import JSONParser
 
 # Create your views here.
 def get_price(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         # logic goes here to look up pricing
-        return HttpResponse()
+        return HttpResponse("Hello, world.")
