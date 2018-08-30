@@ -7,14 +7,17 @@ from .models import Product, ProductPrice
 
 @csrf_exempt # For testing with Postman
 def get_price(request):
-    # Look up ProductPrice according to incoming data
-    # new_price = model_to_dict(Product.objects.get(code=params['code']))
+    # get incoming parameters, save as dictionary/variables
+    params = json.loads(request.body)
+    code = params['code']
+    date = params['date']
 
-    params = json.loads(request.body) # Get incoming data, save as dict
-    # given this, check against ProductPrice
+    # check code and date against changed prices
+    
+
     new_price = model_to_dict(ProductPrice.objects.get(code=params['code']))
-    print(new_price['price'])
-
+    # if match, return new price
+    # else, return old price
 
 
     return HttpResponse(new_price['price'])
