@@ -2,7 +2,7 @@
 
 Hi! Thanks for the opportunity to interview with Smile Direct Club! Any feedback is much appreciated!
 
-
+The data I used to create the ProductPrice models is stored in products_productprice.json
 
 The get_price function based view does this:
 1. gets incoming parameters as json, saves it as a dictionary, then puts those values into single variables
