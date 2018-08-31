@@ -2,13 +2,18 @@
 
 Hi! Thanks for the opportunity to interview with Smile Direct Club! Any feedback is much appreciated!
 
+The data I used to create the ProductPrice models is stored in products_productprice.json
 
-
-*Thought Process:*
-1. Install Django REST
-2. Get anything back from API with Postman
-3. Send product code and date, get back price
-4. Warn user of incorrect codes on submit
+The get_price function based view does this:
+1. gets incoming parameters as json, saves it as a dictionary, then puts those values into single variables
+1. checks incoming keys, throws error if they are incorrect
+1. checks for valid input date, throws error if incoming date is incorrect
+1. checks incoming code against ProductPrice models. if incorrect, throws error
+1. checks incoming date range against date range of price calendar
+1. checks to see if gift card code is present
+1. if present, checks input date vs gift card code date, subtracts giftcard amount
+1. makes sure output price won't drop below zero
+1. returns price
 
 # smile-widget-code-challenge
 
