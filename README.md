@@ -8,6 +8,7 @@ Hi! Thanks for the opportunity to interview with Smile Direct Club! Any feedback
 1. Install Django REST
 2. Get anything back from API with Postman
 3. Send product code and date, get back price
+4. Warn user of incorrect codes on submit
 
 # smile-widget-code-challenge
 

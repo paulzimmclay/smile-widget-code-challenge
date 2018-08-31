@@ -22,16 +22,23 @@ def get_price(request):
     # Makes sure code is valid
     if ProductPrice.objects.filter(code=code).exists():
         objects_with_code = ProductPrice.objects.filter(code=code).values()
-        print(objects_with_code)
+        # print(type(objects_with_code))
     else:
         return HttpResponse('The code you submitted is incorrect. Please try again.')
 
-    # check submitted date against pricing calendar date
-    # get range of dates for model requested
+    # get standard price
+    price = model_to_dict(Product.objects.get(code=code))
 
+    # if date range on price calendar includes date submitted, get new price
     for item in objects_with_code:
-        print(item['id'], item['date_start'], date, item['date_end'])
+        # print(item['id'], item['date_start'], date, item['date_end'])
+        print(str(item['date_start']), date, str(item['date_end']) )
         if str(item['date_start']) <= date and str(item['date_end']) >= date:
-            print(item['price'])
-    return HttpResponse('try for date try')
+            price = item['price']
+    
+    
+
+
+
+    return JsonResponse({'price': price})
 
