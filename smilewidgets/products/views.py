@@ -44,7 +44,7 @@ def get_price(request):
         objects_with_code = ProductPrice.objects.filter(code=code).values()
         # print(type(objects_with_code))
     else:
-        return JsonResponse({'error':'The code you submitted is incorrect. Please try again.'}, status=400)
+        return JsonResponse({'error':'The product code you submitted is incorrect. Please try again.'}, status=400)
 
     # get standard price
     price = model_to_dict(Product.objects.get(code=code))['price']
@@ -58,7 +58,7 @@ def get_price(request):
     try: 
         giftcard_code = params['giftcard']
     except KeyError:
-        giftcard_code = None
+        return JsonResponse({'error':'incorrect key'}, status=400)
 
 
     if GiftCard.objects.filter(code=giftcard_code).exists():
@@ -91,4 +91,3 @@ def get_price(request):
         formatted_price = 0
 
     return JsonResponse({'price': formatted_price})
-

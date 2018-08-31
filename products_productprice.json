@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "code": "big_widget",
+    "price": 80000,
+    "date_start": "2018-11-23",
+    "date_end": "2018-11-25"
+  },
+  {
+    "id": 2,
+    "code": "sm_widget",
+    "price": 0,
+    "date_start": "2018-11-23",
+    "date_end": "2018-11-25"
+  },
+  {
+    "id": 3,
+    "code": "sm_widget",
+    "price": 12500,
+    "date_start": "2019-01-01",
+    "date_end": "2019-12-31"
+  },
+  {
+    "id": 4,
+    "code": "big_widget",
+    "price": 120000,
+    "date_start": "2019-01-01",
+    "date_end": "2019-12-31"
+  }
+]
