@@ -70,18 +70,18 @@ def get_price(request):
             if str(current_giftcard['date_start']) <= date and str(current_giftcard['date_end']) >= date:
                 price = price - current_giftcard['amount']
             else:
-                return JsonResponse({"error":"that giftcard code is expired"})
+                return JsonResponse({"error":"that giftcard code is expired"}, status=400)
         # Check for giftcards that have only start date
         elif current_giftcard['date_start']:
             if str(current_giftcard['date_start']) <= date:
                 price = price - current_giftcard['amount']
             else:
-                return JsonResponse({"error":"that giftcard code is expired"})
+                return JsonResponse({"error":"that giftcard code is expired"}, status=400)
         else:
-            return JsonResponse({"error":"that giftcard code is expired"})
+            return JsonResponse({"error":"that giftcard code is expired"}, status=400)
     else: 
         # Incorrect coupon code (does not match something in db)
-        return JsonResponse({"error":"that giftcard code does not exist"})
+        return JsonResponse({"error":"that giftcard code does not exist"}, status=400)
         
     # convert from cents to dollars
     formatted_price = int(price / 100)
