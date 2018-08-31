@@ -28,6 +28,6 @@ class ProductPrice(models.Model):
     Product Price class. Rows on this table represent sales. 
     """
     code = models.CharField(max_length=25, help_text='Internal facing reference to product')
-    price = models.PositiveIntegerField()
+    price = models.PositiveIntegerField(help_text='Changed pricing')
     date_start = models.DateField()
     date_end = models.DateField(blank=True, null=True)
