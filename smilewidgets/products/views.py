@@ -17,7 +17,6 @@ def get_price(request):
     except KeyError:
         return HttpResponse('Incorrect keys. Make sure you are sending two keys, "code" and "date".')
 
-
     # check code against product price models
     # Makes sure code is valid
     if ProductPrice.objects.filter(code=code).exists():
@@ -36,9 +35,23 @@ def get_price(request):
         if str(item['date_start']) <= date and str(item['date_end']) >= date:
             price = item['price']
     
-    
+    # No coupon code (not present)
+    try: 
+        giftcard_code = params['giftcard']
+    except KeyError:
+        giftcard_code = None
 
 
+    if GiftCard.objects.filter(code=giftcard_code).exists():
+        # Correct coupon code (matches something in db)
+        current_giftcard = model_to_dict(GiftCard.objects.get(code=giftcard_code))
+        price = price - current_giftcard['amount']
+    else: 
+        print('no giftcard found')
+        
+        # Incorrect coupon code (does not match something in db)
 
-    return JsonResponse({'price': price})
+
+    formatted_price = int(price / 100)
+    return JsonResponse({'price': formatted_price})
 
